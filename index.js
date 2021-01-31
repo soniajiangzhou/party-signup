@@ -38,10 +38,12 @@ const onClick = ()=>{
 
   if(!person){alert("Please fill in your name")}
   else if(!time){alert("Please fill in your ETA")}
+  else if(person&&time){
+    uploadData(person,time, plusOne,plusOneName,food,drink,instrument,game,others,message,submit)
+    getFullList()
+  };
 
-  uploadData(person,time, plusOne,plusOneName,food,drink,instrument,game,others,message,submit);
-
-  getFullList();
+  ;
   
 };
 
