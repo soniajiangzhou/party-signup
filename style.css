@@ -1,0 +1,89 @@
+.card {
+    background-color:#36a796af;
+    border-radius: 6px;
+    box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+    color:rgba(255, 255, 255, 0.9);
+    display: block;
+    padding: 1.25rem;
+    padding-bottom: 2rem;
+    margin: 2%;
+  }
+  
+
+  .label {
+    color: white;
+    display: block;
+    font-size: 1rem;
+    font-weight: 700;
+    padding-right: 2%;
+    margin-bottom: 0.5em
+  }
+  
+  .label.no-margin {
+    margin-bottom: 0em
+  }
+  
+  .label.is-small {
+    font-size: 0.75rem;
+  }
+  
+  .label.is-medium {
+    font-size: 1.25rem;
+  }
+  
+  .label.is-large {
+    font-size: 1.5rem;
+  }
+
+  .bottommargin{
+    flex-direction:column;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding:5%;
+  }
+
+  .cross{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 0rem
+  }
+
+
+  .button {
+    background-color: white;
+    border-color: #dbdbdb;
+    border-width: 1px;
+    font-weight: 700;
+    font-size: large;
+    color: #36a796;
+    cursor: pointer;
+    justify-content: center;
+    padding-bottom: calc(0.375em - 1px);
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+    padding-top: calc(0.375em - 1px);
+    text-align: center;
+    white-space: nowrap;
+    display: flex;
+    width: 50%;
+  }
+
+  .buttons {
+    align-items: center;
+    flex-direction: column;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .buttons .button {
+    margin: 2%;
+  }
+
+
+  .help.no-margin {
+    margin-top: 0em;
+    margin-bottom: 0.5em
+  }

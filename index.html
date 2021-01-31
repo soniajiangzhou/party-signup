@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+
+<body>
+  <section class="hero is-primary is-medium">
+    <!-- <div class="hero-head"></div> -->
+    <div class="hero-body">
+      <div class="container has-text-centered bottommargin">
+
+        <p class="title">Welcome</p>
+
+        <p class="subtitle" >
+          Welcom to Sonia’s Party on Feb 6th
+          <br>@建国西路 曲园小区 33号 一楼
+          <br>Party starts at 3:30pm, you are welcome at anytime! 
+          <br>Please <strong>fill the form</strong> below if you plan to join
+          <span class="icon">
+            <i class="fas fa-kiss-wink-heart"></i>
+          </span>
+        </p>
+
+      </div>  
+
+      <form class="card">
+
+        <div class="field">
+          <label for="name" class="label is-medium">Name</label>
+          <div class="control has-icons-left">
+            <input id="name" class="input" type="text" placeholder="e.g. Mr.Buzhidao"             >
+            <span class="icon is-left">
+              <i class="fas fa-poo"></i>
+            </span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="time" class="label is-medium">ETA</label>
+
+          <div class="control has-icons-left">
+            <input id="time" class="input" type="time"  min="15:00" max="23:00" step="600">
+            <!-- <div class="cross">
+              <input id="time" class="input" type="text" required placeholder="--" pattern="[13-24]{1}"> 
+              <p class="label">：</p>
+              <input id="time" class="input" type="text" required placeholder="--">
+            </div> -->
+            <span class="icon is-left">
+              <i class="fas fa-clock"></i>
+            </span>
+            <p class="help is-warning">Party starts at 15:30, i will be there after 13:00</p>
+          </div>
+
+        </div>
+
+        <div class="field">
+          <label for="plusOne" class="label is-medium">Bringing anything one with you?</label>
+          <div class="control has-icons-left">
+            <input id="plusOne" class="input" type="number" min="0" >
+            <span class="icon is-left">
+              <i class="fas fa-user-friends"></i>
+            </span>
+          </div>
+        </div>
+
+        <div class="field is-hidden plusOneName">
+          <label for="plusOneName" class="label is-medium">Plus One Name</label>
+          <div class="control has-icons-left">
+            <input id="plusOneName" class="input" type="text" >
+            <span class="icon is-left">
+              <i class="fas fa-user-friends"></i>
+            </span>
+          </div>
+        </div>
+
+        <label class="label no-margin is-medium">Plan to bring party essential?</label>
+        <p class="help no-margin is-warning">Select the checkbox before you fill in the blank</p>
+
+
+        <div class="field is-grouped">
+          <label for="food" class="label">
+            <input id="foodcheck" type="checkbox"> Food
+          </label>
+          <div class="control has-icons-left is-expanded">
+            <input id="food" class="input is-small" type="text" placeholder="--Please type in the food you are bringing--" disabled>
+            <span class="icon is-left">
+              <i class="fas fa-carrot"></i>
+            </span>
+          </div>
+        </div>
+
+        <div class="field is-grouped">
+          <label for="drink" class="label">
+            <input id="drinkcheck" type="checkbox"> Drink
+          </label>
+          <div class="control has-icons-left is-expanded">
+            <input id="drink" class="input is-small" type="text" placeholder="--Please type in the drink you are bringing--" disabled>
+            <span class="icon is-left">
+              <i class="fas fa-wine-bottle"></i>
+            </span>
+          </div>
+        </div>
+
+        <div class="field is-grouped">
+          <label for="instrument" class="label">
+            <input id="instrumentcheck" type="checkbox"> Instrument
+          </label>
+          <div class="control has-icons-left is-expanded">
+            <input id="instrument" class="input is-small" type="text" placeholder="--Please type in the instrument you are bringing--" disabled>
+            <span class="icon is-left">
+              <i class="fas fa-guitar"></i>
+            </span>
+          </div>
+        </div>
+        
+        <div class="field is-grouped">
+          <label for="game" class="label">
+            <input id="gamecheck" type="checkbox"> Game Prop
+          </label>
+          <div class="control has-icons-left is-expanded">
+            <input id="game" class="input is-small" type="text" placeholder="--Please type in the game prop you are bringing--" disabled>
+            <span class="icon is-left">
+              <i class="fas fa-hat-wizard"></i>
+            </span>
+          </div>
+        </div>
+
+        <div class="field is-grouped">
+          <label for="others" class="label">
+            <input id="otherscheck" type="checkbox"> Others
+          </label>
+          <div class="control has-icons-left is-expanded ">
+            <input id="others" class="input is-small" type="text" placeholder="--If it is a surprise, dont spoil it--"disabled>
+            <span class="icon is-left">
+              <i class="fas fa-bomb"></i>
+            </span>
+          </div>
+        </div>
+        
+        <div class="field">
+          <label for="message" class="label is-medium">
+            Other things you want to let me know? 
+          </label>
+          <textarea class="textarea" placeholder="e.g. allergy.."></textarea>  
+        </div>
+
+      </form>
+
+      <div class="buttons">
+        <button class="button" id="btn">Sign me up!</button>
+        <button class="button" id="fullList">See full guest list</button>
+      </div>
+    
+
+      <div id='fullListRoot'></div>
+      
+    </div>
+
+    
+
+
+  </section>
+
+
+
+  
+  
+
+  <script src="index.js"></script>
+</body>
+
+</html>
