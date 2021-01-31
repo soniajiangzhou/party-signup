@@ -39,12 +39,13 @@ const onClick = ()=>{
   if(!person){alert("Please fill in your name")}
   else if(!time){alert("Please fill in your ETA")}
 
-  uploadData(person,time, plusOne,plusOneName,food,drink,instrument,game,others,message);
+  uploadData(person,time, plusOne,plusOneName,food,drink,instrument,game,others,message,submit);
+
   getFullList();
   
 };
 
-const uploadData =async(person,time, plusOne,plusOneName,food,drink,instrument,game,others,message)=>{
+const uploadData =async(person,time, plusOne,plusOneName,food,drink,instrument,game,others,message,submit)=>{
     const data = JSON.stringify({
       query: `mutation newParticipant {
                 createPartySignup(
@@ -70,6 +71,7 @@ const uploadData =async(person,time, plusOne,plusOneName,food,drink,instrument,g
               }`,
     });
 
+    try {
     const response = await axios(
       { url:'https://strapi.greensteps.cn/graphql',
         method: 'post',
@@ -78,11 +80,18 @@ const uploadData =async(person,time, plusOne,plusOneName,food,drink,instrument,g
           'Content-Type': 'application/json',
         },
       }
-    );
+    ).then(() => {
+      submit.setAttribute("disabled","");
+      submit.innerHTML=("Signed up");
+    });
+    } catch (err) {
+      console.log(err);
+      alert("There was a problem, please try again.")
+    }
 
-    console.log(response);
+ 
 
-    return response.data.data.createPartySignup.partySignup;
+   
     
 };
 
@@ -120,7 +129,10 @@ const fetchData =async()=>{
 
 const getFullList =async()=>{
     const fullList = await fetchData();
+    fullListRoot.innerHTML="";
     for(let rsvp of fullList){
+      console.log(rsvp.plusOneName);
+      let guest = rsvp.plusOneName?(rsvp.name +"+"+ rsvp.plusOneName):rsvp.name;
       let food = rsvp.food?(rsvp.food+";"):"";
       let drink = rsvp.drink?(rsvp.drink+";"):"";
       let game = rsvp.game?(rsvp.game+";"):"";
@@ -130,9 +142,9 @@ const getFullList =async()=>{
       const detail = document.createElement('div');
       detail.setAttribute('class','card');
       detail.innerHTML=`<div color ="white">
-        <strong> Guest: </strong> ${rsvp.plueOneName?(rsvp.name +"+"+ rsvp.plueOneName):rsvp.name} <br> 
-        <strong> ETA: </strong> ${rsvp.time} <br> 
-        <strong> Bring </strong> :${food} ${drink} ${game} ${instrument} ${others} 
+        <b> Guest: </b> ${guest} <br> 
+        <b> ETA: </b> ${rsvp.time} <br> 
+        <b> Bring </b> :${food} ${drink} ${game} ${instrument} ${others} 
         </div>`;
       fullListRoot.appendChild(detail);
 
